@@ -1,18 +1,19 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { Product } from './Product';
 import { Customer } from './Customer';
+import { OrderProducts } from './OrderProducts';
 
 @Entity()
 export class Order extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  uid: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column()
-  dateTime: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @ManyToMany(() => Product)
-  items: Product[];
+  @OneToMany(() => OrderProducts, orderProducts => orderProducts.order)
+  @JoinColumn()
+  orderProducts: OrderProducts[];
 
   @ManyToOne(() => Customer, user => user.orders)
   @JoinColumn()
