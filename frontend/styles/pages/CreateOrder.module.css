@@ -1,0 +1,82 @@
+.container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 38rem;
+
+  padding: 0 2rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 0.8rem;
+}
+
+.orderValue {
+  font-size: 1.3rem;
+
+  margin-top: 0.8rem;
+}
+
+.productsList {
+  list-style: none;
+
+  margin-top: 0.8rem;
+}
+
+.productsList li + li {
+  margin-top: 0.6rem;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+}
+
+.productInfo {
+  font-size: 1.3rem;
+}
+
+.productInfo + .productInfo {
+  margin-left: 4rem;
+}
+
+.addButton {
+  background-color: var(--color-green);
+}
+
+.rmButton {
+  background-color: var(--color-red);
+}
+
+.addButton, .rmButton {
+  color: var(--color-text-light);
+  font-size: 20px;
+  
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+
+  margin-left: 0.4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity 0.2s;
+}
+
+.addButton:active, .rmButton:active {
+  opacity: 0.8;
+}
