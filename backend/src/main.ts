@@ -1,9 +1,17 @@
+import 'dotenv/config';
 import express from 'express';
+import { createConnection } from 'typeorm';
 
-const app = express();
+import routes from './routes';
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Hello World' });
-});
+(async () => {
+  const app = express();
+  
+  app.use(express.json());
 
-app.listen(process.env.PORT ?? 3333);
+  await createConnection();
+  
+  app.use(routes);
+  
+  app.listen(process.env.PORT ?? 3333);
+})();
